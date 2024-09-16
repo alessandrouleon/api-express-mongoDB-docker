@@ -42,6 +42,9 @@ export class UserController {
             const userId = request.params.id;
             const upateUserDTO = request.body as UpdateUserDTO;
 
+            // Chama a validação antes de passar para o use case
+            UserValidator.validateUpdateUser(upateUserDTO);
+
             const updateUser = await this.updateUserUseCase.execute(userId, { ...upateUserDTO });
 
             return response.status(201).json(updateUser);
