@@ -1,7 +1,9 @@
 import { Request, Response } from 'express';
 import { CreateUserDTO } from '../../../application/dtos/users/create-user.dto';
+import { UpdateUserDTO } from '../../../application/dtos/users/update-user.dto';
 import { CreateUserUseCase } from '../../../application/use-cases/users/create-user.use-case';
 import { GetUserUseCase } from '../../../application/use-cases/users/get-user.use-case';
+import { UpdateUserUseCase } from '../../../application/use-cases/users/update-user.use-case';
 import { IUserRepository } from '../../../domain/repositories/user.repository.interface';
 import { UserValidator } from '../../../shared/validation/user-validate-fields';
 import { ICryptoPassword } from '../../crypto/crypto-password.interface';
@@ -11,6 +13,7 @@ export class UserController {
         private userRepository: IUserRepository,
         private cryptoPassword: ICryptoPassword,
         private readonly getUserUseCase: GetUserUseCase,
+        private readonly updateUserUseCase: UpdateUserUseCase,
     ) { }
 
     async createUser(request: Request, response: Response) {
@@ -27,6 +30,21 @@ export class UserController {
             const user = await createUserUseCase.execute(userDTO);
 
             return response.status(201).json(user);
+        } catch (error: any) {
+            return response
+                .status(error.statusCode || 400)
+                .json({ error: error.message });
+        }
+    }
+
+    public async updateUser(request: Request, response: Response): Promise<Response> {
+        try {
+            const userId = request.params.id;
+            const upateUserDTO = request.body as UpdateUserDTO;
+
+            const updateUser = await this.updateUserUseCase.execute(userId, { ...upateUserDTO });
+
+            return response.status(201).json(updateUser);
         } catch (error: any) {
             return response
                 .status(error.statusCode || 400)

@@ -10,7 +10,10 @@ services:
       - mynetwork
 
   nodeapp:
+    # O serviço 'nodeapp' deve estar alinhado com 'mongodb'
     build: .
+    environment:
+      - PORT=3000
     ports:
       - '3000:3000'
     depends_on:

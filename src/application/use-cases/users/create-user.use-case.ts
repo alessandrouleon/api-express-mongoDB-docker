@@ -12,7 +12,7 @@ export class CreateUserUseCase {
 
     async execute(userDTO: CreateUserDTO): Promise<User> {
 
-        const user = User.create(userDTO);
+        const user = User.createUser(userDTO);
 
         const [existsUsername, existsEmail] = await Promise.all([
             this.userRepository.findByUsername(userDTO.username),

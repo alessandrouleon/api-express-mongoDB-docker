@@ -1,32 +1,34 @@
 import { Email } from './email.validator';
 import { Password } from './password.validator';
 
-type ICreateUser = {
-    name: string;
-    username: string;
-    email: string;
-    password: string;
-}
-
 export class User {
     name: string;
     username: string;
     email: string;
     password: string;
-    createdAt: Date;
+    createdAt?: Date;
     updatedAt?: Date | null;
     deletedAt?: Date | null;
 
-    constructor(props: ICreateUser) {
+    constructor(props: User) {
+
         this.name = props.name;
         this.username = props.username;
         this.email = new Email(props.email).getValue();
         this.password = new Password(props.password).getValue();
-        this.createdAt = new Date();
+        this.createdAt = props.createdAt;
+        this.updatedAt = props.updatedAt;
+        this.deletedAt = props.deletedAt;
     }
 
-    static create(props: ICreateUser) {
-        const user = new User(props);
+    static createUser(props: User) {
+        const user = { ...props, createdAt: new Date() };
         return user;
     }
+
+    static updateUser(props: User) {
+        const user: User = { ...props, updatedAt: new Date() };
+        return user;
+    }
+
 }

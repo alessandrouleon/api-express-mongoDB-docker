@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import { CreateUserDTO } from '../../../application/dtos/users/create-user.dto';
 import { User } from '../../../domain/entities/users/user.entity';
 import { IUserRepository, IUserReturnWithPagination } from '../../../domain/repositories/user.repository.interface';
@@ -17,9 +18,14 @@ export class UserRepository implements IUserRepository {
     public async delete(id: string): Promise<void> {
         await UserModel.findByIdAndUpdate(id, { deletedAt: new Date() }).exec();
     }
-
+    //ok
     public async findById(id: string): Promise<User | null> {
-        return UserModel.findById(id).exec();
+        // Verifica se o ID é um ObjectId válido, particular do mongose
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            throw new Error('ID inválido. Deve ter 24 caracteres no formato hexadecimal.');
+        }
+        const userId = await UserModel.findById(id).exec();
+        return userId;
     }
     //ok
     public async findByUsername(username: string): Promise<User | null> {

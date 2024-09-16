@@ -1,4 +1,5 @@
 import { GetUserUseCase } from "../../../application/use-cases/users/get-user.use-case";
+import { UpdateUserUseCase } from "../../../application/use-cases/users/update-user.use-case";
 import { EncryptPassword } from "../../crypto/encrypt-password";
 import { UserRepository } from "../../database/repositories/user.repository";
 import { UserController } from "./user.controller";
@@ -6,7 +7,8 @@ import { UserController } from "./user.controller";
 const userRepository = new UserRepository();
 const cryptoPassword = new EncryptPassword();
 const getUserUseCase = new GetUserUseCase(userRepository);
+const updateUserUseCase = new UpdateUserUseCase(userRepository, cryptoPassword);
 
-const createUserController = new UserController(userRepository, cryptoPassword, getUserUseCase);
+const createUserController = new UserController(userRepository, cryptoPassword, getUserUseCase, updateUserUseCase);
 
 export { createUserController };
