@@ -6,7 +6,7 @@ import { PaginatedData } from '../../../shared/utils/pagination';
 import { UserModel } from '../models/user.model';
 
 export class UserRepository implements IUserRepository {
-    //ok
+
     public async create(user: CreateUserDTO): Promise<User> {
         return new UserModel(user).save();
     }
@@ -15,10 +15,10 @@ export class UserRepository implements IUserRepository {
         return UserModel.findByIdAndUpdate(id, user, { new: true }).exec();
     }
 
-    public async delete(id: string): Promise<void> {
-        await UserModel.findByIdAndUpdate(id, { deletedAt: new Date() }).exec();
+    public async delete(id: string, user: User): Promise<void> {
+        await UserModel.findByIdAndUpdate(id, { deletedAt: user.deletedAt }, { new: true }).exec();
     }
-    //ok
+
     public async findById(id: string): Promise<User | null> {
         // Verifica se o ID é um ObjectId válido, particular do mongose
         if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -27,15 +27,15 @@ export class UserRepository implements IUserRepository {
         const userId = await UserModel.findById(id).exec();
         return userId;
     }
-    //ok
+
     public async findByUsername(username: string): Promise<User | null> {
         return UserModel.findOne({ username }).exec();
     }
-    //ok
+
     public async findByEmail(email: string): Promise<User | null> {
         return UserModel.findOne({ email }).exec();
     }
-    //ok
+
     public async findFilteredUsersWithPagination(value: string,
         { take, page }: PaginatedData): Promise<IUserReturnWithPagination> {
         const query = {
@@ -58,7 +58,7 @@ export class UserRepository implements IUserRepository {
 
         return { users: data, total };
     }
-    //ok
+
     public async findAllUsersWithPagination({ page, take }: PaginatedData): Promise<IUserReturnWithPagination> {
         const query = { deletedAt: { $eq: null } };
 

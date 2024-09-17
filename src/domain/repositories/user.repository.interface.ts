@@ -13,7 +13,7 @@ export interface IUserRepository {
     findByUsername(username: string): Promise<User | null>;
     findByEmail(email: string): Promise<User | null>;
     update(id: string, user: Partial<User>): Promise<User | null>;
-    delete(id: string): Promise<void>;
+    delete(id: string, user: User): Promise<void>;
     findFilteredUsersWithPagination(
         value: string,
         parametersToPaginate: PaginatedData,
