@@ -7,16 +7,19 @@ const UserSchema = new Schema<UserModel>({
     name: {
         type: String,
         required: true,
+        trim: true,
     },
     username: {
         type: String,
         required: true,
         unique: true,
+        trim: true,
     },
     email: {
         type: String,
         required: true,
         unique: true,
+        trim: true,
     },
     password: {
         type: String,
@@ -24,7 +27,7 @@ const UserSchema = new Schema<UserModel>({
     },
     createdAt: {
         type: Date,
-        default: null,
+        default: Date.now,
     },
     updatedAt: {
         type: Date,

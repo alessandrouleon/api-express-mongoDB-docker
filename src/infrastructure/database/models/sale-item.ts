@@ -19,15 +19,15 @@ const saleItemSchema = new mongoose.Schema({
         type: mongoose.Types.Decimal128,
         required: true
     },
-    created_at: {
+    createdAt: {
         type: Date,
         default: Date.now,
     },
-    updated_at: {
+    updatedAt: {
         type: Date,
         default: null,
     },
-    deleted_at: {
+    deletedAt: {
         type: Date,
         default: null,
     }

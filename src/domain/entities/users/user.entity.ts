@@ -22,7 +22,7 @@ export class User {
     }
 
     static createUser(props: User) {
-        const user = { ...props, createdAt: new Date() };
+        const user = { ...props };
         return user;
     }
 

@@ -1,28 +1,37 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
+import { Sale } from '../../../domain/entities/sales/sale.entity';
 
-const saleSchema = new mongoose.Schema({
-    user_id: {
+interface SaleModel extends Sale, Document { }
+
+const saleSchema = new Schema<SaleModel>({
+    userId: {
         type: mongoose.Schema.Types.ObjectId,  // Referência ao ID do usuário
         ref: 'User',
         required: true,
+        trim: true,
     },
     total: {
         type: Number,
         required: true,
+        trim: true,
     },
-    sale_date: {
+    saleDate: {
         type: Date,
         default: Date.now,
     },
-    updated_at: {
+    createdAt: {
+        type: Date,
+        default: Date.now,
+    },
+    updatedAt: {
         type: Date,
         default: null,
     },
-    deleted_at: {
+    deletedAt: {
         type: Date,
         default: null,
     }
 });
 
-const Sale = mongoose.model('Sale', saleSchema);
-export default Sale;
+
+export const SaleModel = mongoose.model<SaleModel>('Sale', saleSchema);
