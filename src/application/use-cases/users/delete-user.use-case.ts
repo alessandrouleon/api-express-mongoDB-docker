@@ -1,5 +1,5 @@
 import { User } from "../../../domain/entities/users/user.entity";
-import { IUserRepository } from "../../../domain/repositories/user.repository.interface";
+import { IUserRepository } from "../../../domain/repositories/users/user.repository.interface";
 import AppError from "../../../shared/errors/app-error";
 
 export class DeleteUserUseCase {

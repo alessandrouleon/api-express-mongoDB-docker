@@ -1,4 +1,4 @@
-import { IUserRepository } from '../../../domain/repositories/user.repository.interface';
+import { IUserRepository } from '../../../domain/repositories/users/user.repository.interface';
 import {
     getParametersToPaginate, PaginatedData, paginateResponse
 } from '../../../shared/utils/pagination';

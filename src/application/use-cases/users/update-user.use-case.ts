@@ -1,7 +1,7 @@
 import { Email } from "../../../domain/entities/users/email.validator";
 import { Password } from "../../../domain/entities/users/password.validator";
 import { User } from "../../../domain/entities/users/user.entity";
-import { IUserRepository } from "../../../domain/repositories/user.repository.interface";
+import { IUserRepository } from "../../../domain/repositories/users/user.repository.interface";
 import { ICryptoPassword } from "../../../infrastructure/crypto/crypto-password.interface";
 import AppError from "../../../shared/errors/app-error";
 import { UpdateUserDTO } from "../../dtos/users/update-user.dto";
