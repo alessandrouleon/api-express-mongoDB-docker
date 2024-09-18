@@ -1,9 +1,9 @@
-import { CreateUserUseCase } from "../../../application/use-cases/users/create-user.use-case";
-import { DeleteUserUseCase } from "../../../application/use-cases/users/delete-user.use-case";
-import { GetUserUseCase } from "../../../application/use-cases/users/get-user.use-case";
-import { UpdateUserUseCase } from "../../../application/use-cases/users/update-user.use-case";
-import { EncryptPassword } from "../../crypto/encrypt-password";
-import { UserRepository } from "../../database/repositories/users/user.repository";
+import { CreateUserUseCase } from "../../../../application/use-cases/users/create-user.use-case";
+import { DeleteUserUseCase } from "../../../../application/use-cases/users/delete-user.use-case";
+import { GetUserUseCase } from "../../../../application/use-cases/users/get-user.use-case";
+import { UpdateUserUseCase } from "../../../../application/use-cases/users/update-user.use-case";
+import { EncryptPassword } from "../../../crypto/encrypt-password";
+import { UserRepository } from "../../../database/repositories/users/user.repository";
 import { UserController } from "./user.controller";
 
 

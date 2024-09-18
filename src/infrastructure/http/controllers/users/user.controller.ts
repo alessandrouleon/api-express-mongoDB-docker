@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
-import { CreateUserDTO } from '../../../application/dtos/users/create-user.dto';
-import { UpdateUserDTO } from '../../../application/dtos/users/update-user.dto';
-import { CreateUserUseCase } from '../../../application/use-cases/users/create-user.use-case';
-import { DeleteUserUseCase } from '../../../application/use-cases/users/delete-user.use-case';
-import { GetUserUseCase } from '../../../application/use-cases/users/get-user.use-case';
-import { UpdateUserUseCase } from '../../../application/use-cases/users/update-user.use-case';
-import { UserValidator } from '../../../shared/validation/user-validate-fields';
+import { CreateUserDTO } from '../../../../application/dtos/users/create-user.dto';
+import { UpdateUserDTO } from '../../../../application/dtos/users/update-user.dto';
+import { CreateUserUseCase } from '../../../../application/use-cases/users/create-user.use-case';
+import { DeleteUserUseCase } from '../../../../application/use-cases/users/delete-user.use-case';
+import { GetUserUseCase } from '../../../../application/use-cases/users/get-user.use-case';
+import { UpdateUserUseCase } from '../../../../application/use-cases/users/update-user.use-case';
+import { UserValidator } from '../../../../shared/validation/user-validate-fields';
 
 export class UserController {
     constructor(
