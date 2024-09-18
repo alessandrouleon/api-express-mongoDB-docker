@@ -10,11 +10,30 @@ const saleSchema = new Schema<SaleModel>({
         required: true,
         trim: true,
     },
-    total: {
+    customerId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Customer',
+        required: true,
+        trim: true,
+    },
+    saleItemsId: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'SaleItem',
+        required: true,
+        trim: true,
+    }],
+    totalAmount: {
         type: Number,
         required: true,
         trim: true,
     },
+    status: {
+        type: String,
+        enum: ['pending', 'completed', 'cancelled'],
+        default: 'pending',
+        trim: true,
+    },
+
     saleDate: {
         type: Date,
         default: Date.now,
@@ -34,4 +53,4 @@ const saleSchema = new Schema<SaleModel>({
 });
 
 
-export const SaleModel = mongoose.model<SaleModel>('Sale', saleSchema);
+export const saleModel = mongoose.model<SaleModel>('Sale', saleSchema);

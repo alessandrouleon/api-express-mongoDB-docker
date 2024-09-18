@@ -1,8 +1,13 @@
+import { Customer } from "../customers/customer.entity";
+import { SaleItem } from "../sale-item/sale-item.entity";
 import { User } from "../users/user.entity";
 
 export class Sale {
     userId: User;
-    total: number;
+    customerId: Customer;
+    saleItemsId: SaleItem;
+    totalAmount: number;
+    status: string;
     saleDate: Date;
     createdAt?: Date;
     updatedAt?: Date | null;
@@ -10,7 +15,10 @@ export class Sale {
 
     constructor(props: Sale) {
         this.userId = props.userId;
-        this.total = props.total;
+        this.customerId = props.customerId;
+        this.saleItemsId = props.saleItemsId;
+        this.totalAmount = props.totalAmount;
+        this.status = props.status;
         this.saleDate = props.saleDate;
         this.createdAt = props.createdAt;
         this.updatedAt = props.updatedAt;

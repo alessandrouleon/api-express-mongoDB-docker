@@ -1,29 +1,29 @@
-import mongoose, { Document, Schema } from "mongoose";
-import { Product } from "../../../domain/entities/products/product.entity";
+import mongoose, { Document, Schema } from 'mongoose';
+import { Customer } from '../../../domain/entities/customers/customer.entity';
 
-interface ProductModel extends Product, Document { }
+interface CustomerModel extends Customer, Document { }
 
-const productSchema = new Schema<ProductModel>({
+const customerSchema = new Schema<CustomerModel>({
     name: {
         type: String,
         required: true,
-        unique: true,
         trim: true,
     },
-    description: {
+    email: {
         type: String,
         required: true,
         unique: true,
         trim: true,
     },
-    price: {
-        type: Number,
+    phone: {
+        type: String,
         required: true,
+        unique: true,
         trim: true,
     },
-    stock: {
-        type: Number,
-        default: 0,
+    address: {
+        type: String,
+        required: true,
         trim: true,
     },
     createdAt: {
@@ -40,4 +40,4 @@ const productSchema = new Schema<ProductModel>({
     }
 });
 
-export const productModel = mongoose.model<ProductModel>('Product', productSchema);
+export const custormerModel = mongoose.model<CustomerModel>('Customer', customerSchema);

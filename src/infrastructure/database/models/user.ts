@@ -3,7 +3,7 @@ import { User } from '../../../domain/entities/users/user.entity';
 
 interface UserModel extends User, Document { }
 
-const UserSchema = new Schema<UserModel>({
+const userSchema = new Schema<UserModel>({
     name: {
         type: String,
         required: true,
@@ -39,4 +39,4 @@ const UserSchema = new Schema<UserModel>({
     }
 });
 
-export const UserModel = mongoose.model<UserModel>('User', UserSchema);
+export const userModel = mongoose.model<UserModel>('User', userSchema);

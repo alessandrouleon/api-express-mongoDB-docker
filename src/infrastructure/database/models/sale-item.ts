@@ -1,23 +1,24 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
+import { SaleItem } from '../../../domain/entities/sale-item/sale-item.entity';
 
-const saleItemSchema = new mongoose.Schema({
-    sale_id: {
-        type: mongoose.Types.ObjectId,
-        ref: 'Sale',
-        required: true
-    },
-    product_id: {
+interface SaleItemModel extends SaleItem, Document { }
+
+const saleItemSchema = new Schema<SaleItemModel>({
+    productId: {
         type: mongoose.Types.ObjectId,
         ref: 'Product',
-        required: true
+        required: true,
+        trim: true,
     },
     quantity: {
         type: Number,
-        required: true
+        required: true,
+        trim: true,
     },
     price: {
-        type: mongoose.Types.Decimal128,
-        required: true
+        type: Number,
+        required: true,
+        trim: true,
     },
     createdAt: {
         type: Date,
@@ -33,5 +34,5 @@ const saleItemSchema = new mongoose.Schema({
     }
 });
 
-const SaleItem = mongoose.model('SaleItem', saleItemSchema);
-export default SaleItem;
+export const saleItemModel = mongoose.model<SaleItemModel>('SaleItem', saleItemSchema);
+
