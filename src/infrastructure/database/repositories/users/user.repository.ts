@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
-import { CreateUserDTO } from '../../../application/dtos/users/create-user.dto';
-import { User } from '../../../domain/entities/users/user.entity';
-import { IUserRepository, IUserReturnWithPagination } from '../../../domain/repositories/user.repository.interface';
-import { PaginatedData } from '../../../shared/utils/pagination';
-import { userModel } from '../models/user';
+import { CreateUserDTO } from '../../../../application/dtos/users/create-user.dto';
+import { User } from '../../../../domain/entities/users/user.entity';
+import { IUserRepository, IUserReturnWithPagination } from '../../../../domain/repositories/users/user.repository.interface';
+import { PaginatedData } from '../../../../shared/utils/pagination';
+import { userModel } from '../../models/user';
 
 export class UserRepository implements IUserRepository {
 

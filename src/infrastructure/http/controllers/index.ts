@@ -3,7 +3,7 @@ import { DeleteUserUseCase } from "../../../application/use-cases/users/delete-u
 import { GetUserUseCase } from "../../../application/use-cases/users/get-user.use-case";
 import { UpdateUserUseCase } from "../../../application/use-cases/users/update-user.use-case";
 import { EncryptPassword } from "../../crypto/encrypt-password";
-import { UserRepository } from "../../database/repositories/user.repository";
+import { UserRepository } from "../../database/repositories/users/user.repository";
 import { UserController } from "./user.controller";
 
 
